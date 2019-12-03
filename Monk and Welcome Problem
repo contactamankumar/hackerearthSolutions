@@ -1,0 +1,36 @@
+
+// Sample code to perform I/O:
+
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+var stdin_input = "";
+
+process.stdin.on("data", function (input) {
+    stdin_input += input;                               // Reading input from STDIN
+});
+
+process.stdin.on("end", function () {
+   main(stdin_input);
+});
+
+function main(input) {
+    var result = calculate(input);
+    for(i=0;i<result.length;i++){
+    process.stdout.write(result[i] + " ");
+    }
+    // Writing output to STDOUT
+}
+
+function calculate(input) {
+    var arr = input.split("\n");
+    var range = arr[0]
+    var newArr = new Array(range)
+    var flag = 0
+    var arr3 = arr[1].split(" ")
+    var arr4 = arr[2].split(" ")
+    for(i=0;i<range;i++) {
+        var sum = parseInt(arr3[i]) + parseInt(arr4[i])
+        newArr[i] = sum
+    }
+    return newArr;
+}
